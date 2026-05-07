@@ -22,7 +22,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           Cerrar sesion
         </Link>
       </aside>
-      <main className="p-5 lg:ml-72 lg:p-10">{children}</main>
+      <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/95 px-4 py-4 backdrop-blur lg:hidden">
+        <div className="flex items-center justify-between gap-3">
+          <Link href="/ynk/admin" className="text-lg font-black">Yanko Admin</Link>
+          <Link href="/ynk/admin/login" className="shrink-0 rounded-lg bg-white/10 px-3 py-2 text-xs font-bold">
+            Salir
+          </Link>
+        </div>
+        <nav className="mt-4 flex gap-2 overflow-x-auto pb-1 text-sm text-white/70">
+          {adminNav.map(([label, href]) => (
+            <Link key={href} href={href} className="shrink-0 rounded-lg bg-white/6 px-3 py-2 hover:bg-white/10 hover:text-white">
+              {label}
+            </Link>
+          ))}
+        </nav>
+      </header>
+      <main className="px-4 py-6 sm:px-6 lg:ml-72 lg:p-10">{children}</main>
     </div>
   );
 }
