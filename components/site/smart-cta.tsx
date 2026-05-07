@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 type SmartCtaCopy = {
   href: string;
@@ -41,6 +42,7 @@ export function SmartCta() {
     >
       <Link
         href={cta.href}
+        onClick={() => trackEvent("smart_cta_click", { pathname, label: cta.label })}
         className="inline-flex min-w-64 items-center justify-center rounded-full border border-white/40 bg-construction-primary px-7 py-3.5 text-sm font-bold text-white shadow-2xl shadow-cyan-900/35 backdrop-blur"
       >
         {cta.label}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
 export function ContactForm() {
@@ -24,9 +25,11 @@ export function ContactForm() {
         };
 
         const supabase = createBrowserSupabaseClient();
+        trackEvent("contact_form_submit", { source: "website", project_type: lead.project_type || "sin_tipo" });
 
         if (!supabase) {
           window.localStorage.setItem("yanko-last-lead", JSON.stringify({ ...lead, created_at: new Date().toISOString() }));
+          trackEvent("contact_form_saved_local", { reason: "no_supabase_client" });
           setStatus("local");
           return;
         }
@@ -35,11 +38,13 @@ export function ContactForm() {
 
         if (error) {
           window.localStorage.setItem("yanko-last-lead", JSON.stringify({ ...lead, created_at: new Date().toISOString(), error: error.message }));
+          trackEvent("contact_form_saved_local", { reason: "supabase_error" });
           setStatus("local");
           return;
         }
 
         event.currentTarget.reset();
+        trackEvent("contact_form_success", { source: "website" });
         setStatus("success");
       }}
     >

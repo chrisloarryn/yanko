@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
 const projectTypes = [
@@ -39,11 +39,70 @@ function formatUf(value: number) {
   }).format(value);
 }
 
+function parseUfNumber(raw: unknown): number | null {
+  if (typeof raw === "number" && Number.isFinite(raw)) return raw;
+  if (typeof raw === "string") {
+    const cleaned = raw.replace(/\$/g, "").replace(/\./g, "").replace(/,/g, ".").replace(/\s/g, "");
+    const parsed = Number(cleaned);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+  return null;
+}
+
+function extractUfValue(payload: unknown): number | null {
+  if (!payload || typeof payload !== "object") return null;
+
+  const queue: unknown[] = [payload];
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (!current || typeof current !== "object") continue;
+
+    for (const [key, value] of Object.entries(current as Record<string, unknown>)) {
+      const normalized = key.toLowerCase();
+      if (["value", "valor", "uf", "price", "amount"].includes(normalized)) {
+        const parsed = parseUfNumber(value);
+        if (parsed) return parsed;
+      }
+
+      if (value && typeof value === "object") queue.push(value);
+      if (Array.isArray(value)) queue.push(...value);
+    }
+  }
+
+  return null;
+}
+
 export function InteractiveProjectPlanner() {
   const [projectType, setProjectType] = useState<(typeof projectTypes)[number]["id"]>("casa");
   const [finishLevel, setFinishLevel] = useState<(typeof finishLevels)[number]["id"]>("equilibrado");
   const [squareMeters, setSquareMeters] = useState(120);
+  const [ufValue, setUfValue] = useState(39000);
+  const [ufSource, setUfSource] = useState<"api" | "fallback">("fallback");
   const [comparison, setComparison] = useState(54);
+
+  useEffect(() => {
+    let active = true;
+
+    const loadUf = async () => {
+      try {
+        const response = await fetch("https://api.boostr.cl/economy/indicator/uf.json", { cache: "no-store" });
+        if (!response.ok) return;
+        const payload = (await response.json()) as unknown;
+        const extracted = extractUfValue(payload);
+        if (active && extracted && extracted > 10000) {
+          setUfValue(extracted);
+          setUfSource("api");
+        }
+      } catch {
+        // fallback keeps default UF
+      }
+    };
+
+    void loadUf();
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const selectedType = projectTypes.find((item) => item.id === projectType) ?? projectTypes[0];
   const selectedFinish = finishLevels.find((item) => item.id === finishLevel) ?? finishLevels[1];
@@ -52,13 +111,24 @@ export function InteractiveProjectPlanner() {
     const ufFrom = squareMeters * selectedType.baseUf * selectedFinish.multiplier;
     const ufTo = ufFrom * 1.22;
     const weeks = Math.round(selectedType.baseWeeks + squareMeters / 18 + (selectedFinish.id === "premium" ? 3 : 0));
+    const clpFrom = ufFrom * ufValue;
+    const clpTo = ufTo * ufValue;
+    const clpPerM2From = clpFrom / squareMeters;
+    const clpPerM2To = clpTo / squareMeters;
 
     return {
       ufFrom,
       ufTo,
       weeks,
+      clpFrom,
+      clpTo,
+      clpPerM2From,
+      clpPerM2To,
     };
-  }, [squareMeters, selectedFinish, selectedType]);
+  }, [squareMeters, selectedFinish, selectedType, ufValue]);
+
+  const formatClp = (value: number) =>
+    new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 }).format(value);
 
   return (
     <section className="bg-construction-neutral py-16 text-white">
@@ -125,6 +195,14 @@ export function InteractiveProjectPlanner() {
                 ))}
               </div>
             </div>
+
+            <div className="rounded-lg bg-white p-5 text-construction-neutral">
+              <p className="text-sm font-bold">Valor UF referencial</p>
+              <p className="mt-2 text-2xl font-black text-construction-primary">{formatClp(ufValue)}</p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-construction-muted">
+                {ufSource === "api" ? "Fuente: API Boostr (UF hoy)" : "Fuente: Valor de respaldo local"}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -132,6 +210,7 @@ export function InteractiveProjectPlanner() {
           <div className="rounded-lg bg-white p-6 text-construction-neutral shadow-xl shadow-emerald-950/20">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-construction-secondary">Referencia inicial</p>
             <div className="mt-4 text-4xl font-black text-construction-primary">UF {formatUf(estimate.ufFrom)} - {formatUf(estimate.ufTo)}</div>
+            <div className="mt-2 text-lg font-bold text-construction-neutral">{formatClp(estimate.clpFrom)} - {formatClp(estimate.clpTo)}</div>
             <p className="mt-3 text-sm leading-7 text-construction-muted">{selectedType.summary}</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <div className="rounded-lg bg-construction-surface p-4">
@@ -141,6 +220,12 @@ export function InteractiveProjectPlanner() {
               <div className="rounded-lg bg-construction-surface p-4">
                 <div className="text-2xl font-black">{selectedFinish.label}</div>
                 <div className="text-xs font-bold uppercase tracking-[0.14em] text-construction-muted">Terminacion</div>
+              </div>
+            </div>
+            <div className="mt-3 rounded-lg bg-construction-surface p-4">
+              <div className="text-sm font-bold text-construction-neutral">Costo estimado por m2</div>
+              <div className="mt-1 text-lg font-black text-construction-primary">
+                {formatClp(estimate.clpPerM2From)} - {formatClp(estimate.clpPerM2To)}
               </div>
             </div>
             <Link href="/contacto" className="u-btn-primary mt-6 w-full">Solicitar visita</Link>
