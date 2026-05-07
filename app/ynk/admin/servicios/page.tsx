@@ -1,5 +1,46 @@
+import { LocalCollectionEditor } from "@/components/admin/local-collection-editor";
 import { services } from "@/lib/data/services";
 
+type AdminService = {
+  title: string;
+  slug: string;
+  excerpt: string;
+  description: string;
+  icon: string;
+  isPublished: boolean;
+};
+
 export default function AdminServicesPage() {
-  return <div><h1 className="text-4xl font-black">Servicios</h1><div className="mt-8 grid gap-4">{services.map((service) => <div key={service.slug} className="rounded-3xl bg-white/10 p-5"><h2 className="font-bold">{service.title}</h2><p className="text-sm text-white/60">{service.excerpt}</p></div>)}</div></div>;
+  const initialItems: AdminService[] = services.map((service) => ({
+    title: service.title,
+    slug: service.slug,
+    excerpt: service.excerpt,
+    description: service.description,
+    icon: service.icon,
+    isPublished: service.isPublished,
+  }));
+
+  return (
+    <LocalCollectionEditor
+      title="Servicios"
+      storageKey="yanko-admin-services"
+      initialItems={initialItems}
+      newItem={{
+        title: "Nuevo servicio",
+        slug: "nuevo-servicio",
+        excerpt: "Resumen breve del servicio.",
+        description: "Descripcion completa del servicio.",
+        icon: "Nuevo",
+        isPublished: true,
+      }}
+      fields={[
+        { key: "title", label: "Titulo" },
+        { key: "slug", label: "Slug" },
+        { key: "excerpt", label: "Resumen", type: "textarea" },
+        { key: "description", label: "Descripcion", type: "textarea" },
+        { key: "icon", label: "Etiqueta icono" },
+        { key: "isPublished", label: "Publicado", type: "checkbox" },
+      ]}
+    />
+  );
 }

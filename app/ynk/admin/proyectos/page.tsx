@@ -1,9 +1,50 @@
+import { LocalCollectionEditor } from "@/components/admin/local-collection-editor";
 import { projects } from "@/lib/data/projects";
 
-export default function AdminProjectsPage() {
-  return <AdminTable title="Proyectos" rows={projects.map((item) => [item.title, item.category, item.location, item.isPublished ? "Publicado" : "Borrador"])} />;
-}
+type AdminProject = {
+  title: string;
+  slug: string;
+  category: string;
+  location: string;
+  excerpt: string;
+  coverImageUrl: string;
+  isPublished: boolean;
+};
 
-function AdminTable({ title, rows }: { title: string; rows: string[][] }) {
-  return <div><h1 className="text-4xl font-black">{title}</h1><div className="mt-8 overflow-hidden rounded-3xl border border-white/10">{rows.map((row) => <div key={row.join("")} className="grid gap-4 border-b border-white/10 p-4 text-sm text-white/75 md:grid-cols-4">{row.map((cell) => <span key={cell}>{cell}</span>)}</div>)}</div><p className="mt-6 text-sm text-white/50">CRUD real se conecta en el slice de Supabase/admin maintainers.</p></div>;
+export default function AdminProjectsPage() {
+  const initialItems: AdminProject[] = projects.map((project) => ({
+    title: project.title,
+    slug: project.slug,
+    category: project.category,
+    location: project.location,
+    excerpt: project.excerpt,
+    coverImageUrl: project.coverImageUrl ?? "",
+    isPublished: project.isPublished,
+  }));
+
+  return (
+    <LocalCollectionEditor
+      title="Proyectos"
+      storageKey="yanko-admin-projects"
+      initialItems={initialItems}
+      newItem={{
+        title: "Nuevo proyecto",
+        slug: "nuevo-proyecto",
+        category: "construccion",
+        location: "Por definir",
+        excerpt: "Descripcion breve del proyecto.",
+        coverImageUrl: "",
+        isPublished: true,
+      }}
+      fields={[
+        { key: "title", label: "Titulo" },
+        { key: "slug", label: "Slug" },
+        { key: "category", label: "Categoria", type: "select", options: ["construccion", "remodelaciones", "ampliaciones"] },
+        { key: "location", label: "Ubicacion" },
+        { key: "excerpt", label: "Resumen", type: "textarea" },
+        { key: "coverImageUrl", label: "URL imagen" },
+        { key: "isPublished", label: "Publicado", type: "checkbox" },
+      ]}
+    />
+  );
 }

@@ -1,5 +1,27 @@
+import { LocalSettingsEditor } from "@/components/admin/local-settings-editor";
 import { contact } from "@/lib/data/site";
 
 export default function AdminConfigPage() {
-  return <div><h1 className="text-4xl font-black">Configuracion</h1><div className="mt-8 rounded-3xl bg-white/10 p-6 text-white/70"><p>{contact.phone}</p><p>{contact.email}</p><p>{contact.address}</p></div></div>;
+  return (
+    <LocalSettingsEditor
+      title="Configuracion"
+      storageKey="yanko-admin-config"
+      initialValue={{
+        phone: contact.phone,
+        email: contact.email,
+        address: contact.address,
+        whatsapp: contact.whatsapp,
+        facebook: contact.facebook,
+        instagram: contact.instagram,
+      }}
+      fields={[
+        { key: "phone", label: "Telefono" },
+        { key: "email", label: "Email" },
+        { key: "address", label: "Direccion", type: "textarea" },
+        { key: "whatsapp", label: "Whatsapp" },
+        { key: "facebook", label: "Facebook" },
+        { key: "instagram", label: "Instagram" },
+      ]}
+    />
+  );
 }
