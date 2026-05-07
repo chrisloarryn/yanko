@@ -12,6 +12,7 @@ type SmartCtaCopy = {
 
 export function SmartCta() {
   const pathname = usePathname();
+  const currentPath = pathname ?? "";
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -22,28 +23,29 @@ export function SmartCta() {
   }, []);
 
   const cta = useMemo<SmartCtaCopy>(() => {
-    if (pathname.startsWith("/proyectos")) {
+    if (currentPath.startsWith("/proyectos")) {
       return { href: "/contacto", label: "Cotizar proyecto similar" };
     }
-    if (pathname.startsWith("/servicios")) {
+    if (currentPath.startsWith("/servicios")) {
       return { href: "/contacto", label: "Solicitar propuesta" };
     }
-    if (pathname.startsWith("/sistemas-de-construccion")) {
+    if (currentPath.startsWith("/sistemas-de-construccion")) {
       return { href: "/contacto", label: "Evaluar mejor sistema" };
     }
     return { href: "/contacto", label: "Agendar visita tecnica" };
-  }, [pathname]);
+  }, [currentPath]);
 
   return (
     <div
       className={`fixed bottom-5 left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ${
         active ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none translate-y-5 opacity-0"
       }`}
+      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 5.25rem)" }}
     >
       <Link
         href={cta.href}
-        onClick={() => trackEvent("smart_cta_click", { pathname, label: cta.label })}
-        className="inline-flex min-w-64 items-center justify-center rounded-full border border-white/40 bg-construction-primary px-7 py-3.5 text-sm font-bold text-white shadow-2xl shadow-cyan-900/35 backdrop-blur"
+        onClick={() => trackEvent("smart_cta_click", { pathname: currentPath, label: cta.label })}
+        className="inline-flex w-[calc(100vw-2rem)] max-w-sm items-center justify-center rounded-full border border-white/40 bg-construction-primary px-6 py-3.5 text-sm font-bold text-white shadow-2xl shadow-cyan-900/35 backdrop-blur md:w-auto md:min-w-64 md:px-7"
       >
         {cta.label}
       </Link>
