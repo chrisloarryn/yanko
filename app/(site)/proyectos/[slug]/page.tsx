@@ -44,7 +44,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <div className="mt-10 rounded-[2.5rem] bg-[radial-gradient(circle_at_top_left,#3cb8cb,#0d3f64)] p-4 md:p-6">
           <BeforeAfterSlider
             beforeImage="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1600&q=80"
-            afterImage={project.coverImageUrl}
+            afterImage={project.coverImageUrl ?? "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"}
           />
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
