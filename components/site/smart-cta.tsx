@@ -37,10 +37,9 @@ export function SmartCta() {
 
   return (
     <div
-      className={`fixed bottom-5 left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ${
+      className={`fixed bottom-[calc(env(safe-area-inset-bottom,0px)+1rem)] left-1/2 z-50 -translate-x-1/2 transition-all duration-300 md:bottom-[calc(env(safe-area-inset-bottom,0px)+5.25rem)] ${
         active ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none translate-y-5 opacity-0"
       }`}
-      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 5.25rem)" }}
     >
       <Link
         href={cta.href}

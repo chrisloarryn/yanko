@@ -20,10 +20,9 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noreferrer"
       onClick={() => trackEvent("whatsapp_click", { placement: "floating_button" })}
-      className={`fixed right-4 z-50 rounded-full bg-[#25d366] px-4 py-3 text-sm font-bold text-white shadow-2xl shadow-emerald-950/30 transition hover:scale-105 md:right-5 md:px-5 ${
+      className={`fixed bottom-[calc(env(safe-area-inset-bottom,0px)+1rem)] right-4 z-50 rounded-full bg-[#25d366] px-4 py-3 text-sm font-bold text-white shadow-2xl shadow-emerald-950/30 transition hover:scale-105 md:bottom-[calc(env(safe-area-inset-bottom,0px)+5.25rem)] md:right-5 md:px-5 ${
         hideOnMobile ? "pointer-events-none opacity-0 md:pointer-events-auto md:opacity-100" : "opacity-100"
       }`}
-      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 1rem)" }}
       aria-label="Cotizar por WhatsApp"
     >
       <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
