@@ -73,6 +73,7 @@ leads
 - name text not null
 - email text
 - phone text
+- project_type text
 - message text not null
 - source text
 - created_at timestamptz default now()

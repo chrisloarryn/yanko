@@ -1,15 +1,45 @@
 "use client";
 
 import { useState } from "react";
+import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
 export function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "local" | "error">("idle");
 
   return (
     <form
       className="u-card grid gap-4"
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
+        setStatus("submitting");
+
+        const formData = new FormData(event.currentTarget);
+        const lead = {
+          name: String(formData.get("name") || ""),
+          email: String(formData.get("email") || ""),
+          phone: String(formData.get("phone") || ""),
+          project_type: String(formData.get("projectType") || ""),
+          message: String(formData.get("message") || ""),
+          source: "website",
+        };
+
+        const supabase = createBrowserSupabaseClient();
+
+        if (!supabase) {
+          window.localStorage.setItem("yanko-last-lead", JSON.stringify({ ...lead, created_at: new Date().toISOString() }));
+          setStatus("local");
+          return;
+        }
+
+        const { error } = await supabase.from("leads").insert(lead);
+
+        if (error) {
+          window.localStorage.setItem("yanko-last-lead", JSON.stringify({ ...lead, created_at: new Date().toISOString(), error: error.message }));
+          setStatus("local");
+          return;
+        }
+
+        event.currentTarget.reset();
         setStatus("success");
       }}
     >
@@ -26,8 +56,12 @@ export function ContactForm() {
         <option>Alcantarillado rural</option>
       </select>
       <textarea required name="message" className="u-input min-h-36" placeholder="Cuentanos que necesitas construir o mejorar" />
-      <button className="u-btn-primary" type="submit">Enviar solicitud</button>
-      {status === "success" ? <p className="text-sm font-semibold text-construction-primary">Solicitud registrada localmente. En la integracion final quedara guardada en Supabase.</p> : null}
+      <button className="u-btn-primary" type="submit" disabled={status === "submitting"}>
+        {status === "submitting" ? "Enviando..." : "Enviar solicitud"}
+      </button>
+      {status === "success" ? <p className="text-sm font-semibold text-construction-primary">Solicitud enviada correctamente.</p> : null}
+      {status === "local" ? <p className="text-sm font-semibold text-construction-secondary">Solicitud guardada localmente. Revisa la configuracion de Supabase/RLS para persistirla.</p> : null}
+      {status === "error" ? <p className="text-sm font-semibold text-red-600">No pudimos registrar la solicitud. Intenta por Whatsapp.</p> : null}
     </form>
   );
 }

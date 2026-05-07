@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProjectCard } from "@/components/site/cards";
+import { DynamicProjectGrid } from "@/components/site/dynamic-project-grid";
 import { SectionHeading } from "@/components/site/section-heading";
 import { categoryLabels, projects } from "@/lib/data/projects";
 import type { ContentCategory } from "@/lib/types/content";
@@ -21,9 +21,7 @@ export default function ProjectsPage({ searchParams }: { searchParams: { categor
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           {categories.map((item) => <a key={item} href={item === "todos" ? "/proyectos" : `/proyectos?categoria=${item}`} className="u-btn-secondary">{categoryLabels[item]}</a>)}
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {visibleProjects.map((project) => <ProjectCard key={project.slug} project={project} />)}
-        </div>
+        <DynamicProjectGrid initialProjects={visibleProjects} category={category} />
       </div>
     </section>
   );

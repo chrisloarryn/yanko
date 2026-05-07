@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LocalBusinessJsonLd } from "@/components/site/local-business-json-ld";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-CL" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <LocalBusinessJsonLd />
+        {children}
+      </body>
     </html>
   );
 }
