@@ -1,27 +1,27 @@
 import type { SiteMetric, SiteValue } from "@/lib/types/content";
 
 export const contact = {
-  phone: "+56 9 6878 7200",
-  phoneHref: "tel:+56968787200",
-  whatsapp: "https://wa.me/56968787200?text=Hola,%20quiero%20cotizar%20un%20proyecto",
-  email: "ventascasasrm@gmail.com",
-  emailHref: "mailto:ventascasasrm@gmail.com",
-  address: "Av. Lonquen Sur 6300, Parcela 7, Talagante",
+  phone: "+56 9 2709 1061",
+  phoneHref: "tel:+56927091061",
+  whatsapp: "https://wa.me/56927091061?text=Hola,%20quiero%20cotizar%20un%20proyecto",
+  email: "yanko.valladares@gmail.com",
+  emailHref: "mailto:yanko.valladares@gmail.com",
+  address: "Talca, Region del Maule, Chile",
   facebook: "https://www.facebook.com/",
   instagram: "https://www.instagram.com/",
 };
 
 export const siteCopy = {
   brand: "Yanko",
-  heroTitle: "Construye la casa de tus suenos con confianza",
+  heroTitle: "Casas premium en Talca con proceso claro y cero improvisacion",
   heroSubtitle:
-    "Disenamos, construimos, ampliamos y remodelamos hogares en Chile con materiales de calidad, gestion clara y acompanamiento profesional desde la idea hasta la entrega.",
+    "Disenamos y ejecutamos proyectos residenciales en la Region del Maule con planificacion tecnica, control de avance semanal y terminaciones de alto estandar.",
   mission:
-    "Entregar soluciones habitacionales seguras, duraderas y bien ejecutadas, acompanando a cada familia con seriedad, comunicacion clara y altos estandares de construccion.",
+    "Entregar proyectos residenciales seguros, duraderos y bien gestionados para familias que valoran claridad, cumplimiento y calidad constructiva.",
   vision:
-    "Ser una constructora reconocida por transformar ideas en hogares confiables, funcionales y adaptados a la forma de vivir de cada cliente.",
+    "Ser la constructora referente en Talca y Maule para obras residenciales premium con trazabilidad total y experiencia de cliente sobresaliente.",
   about:
-    "Nos especializamos en construccion de casas, ampliaciones, remodelaciones, asesorias tecnicas y proyectos de alcantarillado rural. Nuestro trabajo combina experiencia en terreno, planificacion responsable y terminaciones pensadas para durar.",
+    "Nos especializamos en construccion de casas, ampliaciones, remodelaciones y asesorias tecnicas. Combinamos experiencia en terreno, control de calidad por etapas y comunicacion transparente para que cada decision se tome con datos y no con supuestos.",
 };
 
 export const values: SiteValue[] = [
@@ -45,8 +45,8 @@ export const values: SiteValue[] = [
 
 export const metrics: SiteMetric[] = [
   { label: "Anos de experiencia", value: "25+" },
-  { label: "Casas entregadas", value: "120+" },
-  { label: "m2 construidos", value: "18.000+" },
+  { label: "Proyectos entregados", value: "120+" },
+  { label: "Tiempo de respuesta", value: "<24h" },
 ];
 
 export const navItems = [

@@ -1,6 +1,17 @@
 import type { Metadata } from "next";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import { LocalBusinessJsonLd } from "@/components/site/local-business-json-ld";
 import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yanko.cl"),
@@ -26,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-CL" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">
+      <body className={`${manrope.variable} ${spaceGrotesk.variable} min-h-full flex flex-col`}>
         <LocalBusinessJsonLd />
         {children}
       </body>

@@ -6,13 +6,15 @@ export function generateStaticParams() {
   return constructionSystems.map((system) => ({ slug: system.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const system = constructionSystems.find((item) => item.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const system = constructionSystems.find((item) => item.slug === slug);
   return { title: system?.title || "Sistema de construccion", description: system?.excerpt };
 }
 
-export default function SystemDetailPage({ params }: { params: { slug: string } }) {
-  const system = constructionSystems.find((item) => item.slug === params.slug);
+export default async function SystemDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const system = constructionSystems.find((item) => item.slug === slug);
   if (!system) notFound();
 
   return (

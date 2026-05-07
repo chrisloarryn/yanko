@@ -8,6 +8,31 @@ import { metrics, siteCopy, values } from "@/lib/data/site";
 
 export default function HomePage() {
   const featuredProjects = projects.filter((project) => project.isFeatured).slice(0, 6);
+  const proofPoints = [
+    "Visita tecnica inicial en terreno",
+    "Propuesta con alcance y presupuesto por partidas",
+    "Reporte semanal de avance con proximos hitos",
+  ];
+  const testimonials = [
+    {
+      quote:
+        "Cumplieron plazo y presupuesto con una coordinacion impecable. Siempre supimos en que etapa iba la obra.",
+      author: "Familia Rojas",
+      context: "Casa unifamiliar, Talca",
+    },
+    {
+      quote:
+        "El nivel de terminaciones y la comunicacion diaria marcaron una diferencia enorme frente a otras constructoras.",
+      author: "Carolina M.",
+      context: "Remodelacion integral, Maule",
+    },
+    {
+      quote:
+        "Nos orientaron desde el diseno hasta la recepcion final. Cero improvisacion y decisiones claras todo el tiempo.",
+      author: "Jorge y Paula",
+      context: "Ampliacion y quincho, San Clemente",
+    },
+  ];
   const processSteps = [
     {
       title: "Visita a terreno",
@@ -43,19 +68,27 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="relative min-h-[720px] overflow-hidden bg-construction-neutral text-white">
+      <section className="relative min-h-[760px] overflow-hidden bg-construction-neutral text-white">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(90deg, rgba(12, 20, 16, 0.86) 0%, rgba(12, 20, 16, 0.58) 46%, rgba(12, 20, 16, 0.18) 100%), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=85')",
+              "linear-gradient(104deg, rgba(8, 17, 33, 0.92) 0%, rgba(8, 17, 33, 0.7) 38%, rgba(8, 17, 33, 0.22) 100%), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=85')",
           }}
         />
-        <div className="u-container relative flex min-h-[720px] items-center py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_12%,rgba(239,131,84,0.28),transparent_28%),radial-gradient(circle_at_30%_70%,rgba(13,118,110,0.22),transparent_30%)]" />
+        <div className="u-container relative flex min-h-[760px] items-center py-24">
           <div className="max-w-3xl">
-            <p className="mb-5 inline-flex rounded-sm bg-white/12 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em] text-emerald-100">Construccion de casas y remodelaciones</p>
-            <h1 className="text-5xl font-black tracking-tight md:text-7xl">{siteCopy.heroTitle}</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82">{siteCopy.heroSubtitle}</p>
+            <p className="mb-5 inline-flex rounded-full border border-white/25 bg-white/12 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-100">Construccion de casas y remodelaciones</p>
+            <h1 className="text-5xl font-black tracking-tight md:text-7xl md:leading-[0.98]">{siteCopy.heroTitle}</h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/86">{siteCopy.heroSubtitle}</p>
+            <div className="mt-7 flex flex-wrap gap-2">
+              {proofPoints.map((point) => (
+                <span key={point} className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white/90">
+                  {point}
+                </span>
+              ))}
+            </div>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link href="/contacto" className="u-btn-primary">Cotiza tu proyecto</Link>
               <Link href="/proyectos" className="u-btn-light">Ver proyectos</Link>
@@ -64,10 +97,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-emerald-950/10 bg-white">
+      <section className="border-b border-construction-primary/10 bg-white/75 backdrop-blur">
         <div className="u-container grid gap-6 py-8 md:grid-cols-3">
           {metrics.map((metric) => (
-            <div key={metric.label} className="border-l-4 border-construction-secondary pl-5">
+            <div key={metric.label} className="rounded-2xl border border-construction-primary/10 bg-white/80 p-5">
               <div className="text-4xl font-black text-construction-primary">{metric.value}</div>
               <div className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-construction-muted">{metric.label}</div>
             </div>
@@ -87,10 +120,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white u-section">
+      <section className="u-section pt-0">
+        <div className="u-container">
+          <div className="rounded-3xl border border-construction-primary/15 bg-white/80 p-7 shadow-xl shadow-cyan-900/10 backdrop-blur md:p-10">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div>
+                <SectionHeading
+                  eyebrow="Prueba social"
+                  title="Clientes que recomiendan por cumplimiento, no por promesas"
+                  description="Cada proyecto se ejecuta con hitos medibles, control de presupuesto y comunicacion constante con la familia." 
+                />
+                <Link href="/contacto" className="u-btn-primary mt-7">Agendar visita tecnica</Link>
+              </div>
+              <div className="grid gap-4 md:grid-cols-3">
+                {testimonials.map((item) => (
+                  <article key={item.author} className="rounded-2xl border border-construction-primary/10 bg-white p-5">
+                    <p className="text-sm leading-7 text-construction-muted">&ldquo;{item.quote}&rdquo;</p>
+                    <p className="mt-4 text-sm font-bold text-construction-neutral">{item.author}</p>
+                    <p className="text-xs uppercase tracking-[0.14em] text-construction-secondary">{item.context}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white/70 u-section">
         <div className="u-container grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="relative min-h-[520px] overflow-hidden rounded-lg bg-cover bg-center shadow-xl shadow-emerald-950/10" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=85')" }}>
-            <div className="absolute bottom-6 left-6 max-w-xs rounded-lg bg-white p-6 shadow-lg">
+          <div className="relative min-h-[520px] overflow-hidden rounded-3xl bg-cover bg-center shadow-xl shadow-cyan-900/20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=85')" }}>
+            <div className="absolute bottom-6 left-6 max-w-xs rounded-2xl bg-white p-6 shadow-lg">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-construction-secondary">Nuestro compromiso</p>
               <p className="mt-3 text-2xl font-black leading-tight text-construction-neutral">Cada hogar lleva nuestra firma de calidad.</p>
             </div>
@@ -99,7 +158,7 @@ export default function HomePage() {
             <SectionHeading eyebrow="Sobre nosotros" title="Entregar calidad y confianza en cada construccion" description={siteCopy.about} />
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {values.map((value) => (
-                <div key={value.title} className="rounded-lg border border-emerald-950/10 bg-construction-surface p-6">
+                <div key={value.title} className="rounded-2xl border border-construction-primary/12 bg-construction-surface p-6">
                   <h3 className="font-bold text-construction-primary">{value.title}</h3>
                   <p className="mt-2 text-sm leading-7 text-construction-muted">{value.description}</p>
                 </div>
@@ -112,7 +171,7 @@ export default function HomePage() {
 
       <InteractiveProjectPlanner />
 
-      <section className="bg-construction-neutral py-16 text-white">
+      <section className="bg-[linear-gradient(135deg,#081325_0%,#0b2a46_55%,#0d766e_130%)] py-16 text-white">
         <div className="u-container grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-100">Como trabajamos</p>
@@ -121,7 +180,7 @@ export default function HomePage() {
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {processSteps.map((step, index) => (
-              <div key={step.title} className="rounded-lg border border-white/10 bg-white/6 p-6">
+              <div key={step.title} className="rounded-2xl border border-white/15 bg-white/8 p-6 backdrop-blur-sm">
                 <div className="text-sm font-black text-construction-secondary">0{index + 1}</div>
                 <h3 className="mt-4 text-xl font-bold">{step.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-white/68">{step.description}</p>
@@ -131,20 +190,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white u-section">
+      <section className="bg-white/80 u-section">
         <div className="u-container">
           <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
             <SectionHeading eyebrow="Sistema Yanko" title="Como construimos con orden" description="Integramos planificacion, control y experiencia en terreno para que cada etapa tenga responsables, evidencias y decisiones claras." />
             <div className="grid gap-4 sm:grid-cols-2">
               {buildSystem.map((item) => (
-                <div key={item.title} className="rounded-lg border border-emerald-950/10 bg-construction-cream p-6">
+                <div key={item.title} className="rounded-2xl border border-construction-primary/12 bg-construction-cream p-6">
                   <h3 className="text-lg font-black text-construction-neutral">{item.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-construction-muted">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
-          <div className="mt-10 overflow-hidden rounded-lg bg-construction-neutral text-white">
+          <div className="mt-10 overflow-hidden rounded-3xl bg-construction-neutral text-white shadow-xl shadow-cyan-900/20">
             <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
               <div className="min-h-[360px] bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1400&q=85')" }} />
               <div className="p-8 md:p-10">
@@ -168,7 +227,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-construction-primary py-16 text-white">
+      <section className="bg-[linear-gradient(112deg,#0d766e_0%,#0a5a67_58%,#0d3d66_120%)] py-16 text-white">
         <div className="u-container grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <h2 className="text-4xl font-black tracking-tight">Listo para comenzar tu proyecto?</h2>
