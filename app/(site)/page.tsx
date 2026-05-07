@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ProjectCard, ServiceCard } from "@/components/site/cards";
+import { InteractiveProjectPlanner } from "@/components/site/interactive-project-planner";
 import { SectionHeading } from "@/components/site/section-heading";
 import { projects } from "@/lib/data/projects";
 import { services } from "@/lib/data/services";
@@ -19,6 +20,24 @@ export default function HomePage() {
     {
       title: "Ejecucion supervisada",
       description: "Coordinamos obra, compras y terminaciones con seguimiento tecnico hasta la recepcion del proyecto.",
+    },
+  ];
+  const buildSystem = [
+    {
+      title: "Estandares de obra",
+      description: "Usamos criterios repetibles para ordenar partidas, compras, control de avances y terminaciones.",
+    },
+    {
+      title: "Tecnologia practica",
+      description: "Documentamos avances, decisiones y pendientes para mantener trazabilidad durante la ejecucion.",
+    },
+    {
+      title: "Control transparente",
+      description: "Compartimos estado, proximos pasos y alertas relevantes antes de que afecten plazo o presupuesto.",
+    },
+    {
+      title: "Expertos coordinados",
+      description: "Integramos maestros, especialistas y supervision tecnica segun la complejidad de cada proyecto.",
     },
   ];
 
@@ -91,6 +110,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <InteractiveProjectPlanner />
+
       <section className="bg-construction-neutral py-16 text-white">
         <div className="u-container grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
@@ -106,6 +127,33 @@ export default function HomePage() {
                 <p className="mt-3 text-sm leading-7 text-white/68">{step.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white u-section">
+        <div className="u-container">
+          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+            <SectionHeading eyebrow="Sistema Yanko" title="Como construimos con orden" description="Integramos planificacion, control y experiencia en terreno para que cada etapa tenga responsables, evidencias y decisiones claras." />
+            <div className="grid gap-4 sm:grid-cols-2">
+              {buildSystem.map((item) => (
+                <div key={item.title} className="rounded-lg border border-emerald-950/10 bg-construction-cream p-6">
+                  <h3 className="text-lg font-black text-construction-neutral">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-construction-muted">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mt-10 overflow-hidden rounded-lg bg-construction-neutral text-white">
+            <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
+              <div className="min-h-[360px] bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1400&q=85')" }} />
+              <div className="p-8 md:p-10">
+                <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-100">Control de proyecto</p>
+                <h3 className="mt-4 text-3xl font-black tracking-tight">Menos improvisacion, mas claridad en terreno</h3>
+                <p className="mt-5 leading-8 text-white/72">Antes de construir definimos alcance, secuencia y responsables. Durante la obra registramos avances y resolvemos ajustes con informacion concreta.</p>
+                <Link href="/contacto" className="u-btn-light mt-7">Agenda una visita</Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

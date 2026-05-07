@@ -36,6 +36,9 @@ jobs:
       - name: Build static site
         run: npm run build
 
+      - name: Preserve Next static assets
+        run: touch out/.nojekyll
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
