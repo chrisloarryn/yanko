@@ -54,6 +54,32 @@ export const services: Service[] = [
     sortOrder: 4,
   },
   {
+    id: "piscinas-quinchos",
+    title: "Piscinas y Quinchos",
+    slug: "piscinas-y-quinchos",
+    excerpt: "Espacios exteriores pensados para disfrutar, recibir y sumar valor.",
+    description:
+      "Disenamos y ejecutamos piscinas, quinchos, terrazas y zonas exteriores con materiales duraderos y una distribucion funcional para cada familia.",
+    benefits: ["Diseno a medida", "Terminaciones resistentes", "Integracion con la vivienda"],
+    process: ["Visita", "Diseno", "Presupuesto", "Construccion"],
+    icon: "Exterior",
+    isPublished: true,
+    sortOrder: 5,
+  },
+  {
+    id: "logias-terrazas",
+    title: "Logias y Terrazas",
+    slug: "logias-y-terrazas",
+    excerpt: "Ambientes complementarios mas ordenados, versatiles y luminosos.",
+    description:
+      "Transformamos logias, terrazas y espacios de apoyo en areas funcionales, bien iluminadas y adaptadas a la rutina diaria del hogar.",
+    benefits: ["Mejor distribucion", "Mayor funcionalidad", "Uso eficiente del espacio"],
+    process: ["Diagnostico", "Propuesta", "Ejecucion", "Entrega"],
+    icon: "Logia",
+    isPublished: true,
+    sortOrder: 6,
+  },
+  {
     id: "obras-menores",
     title: "Obras Menores",
     slug: "obras-menores",
@@ -64,6 +90,6 @@ export const services: Service[] = [
     process: ["Visita", "Cotizacion", "Ejecucion"],
     icon: "Herramienta",
     isPublished: true,
-    sortOrder: 5,
+    sortOrder: 7,
   },
 ];

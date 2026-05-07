@@ -7,34 +7,62 @@ import { metrics, siteCopy, values } from "@/lib/data/site";
 
 export default function HomePage() {
   const featuredProjects = projects.filter((project) => project.isFeatured).slice(0, 6);
+  const processSteps = [
+    {
+      title: "Visita a terreno",
+      description: "Levantamos medidas, condiciones del terreno, necesidades y prioridades para definir un alcance realista.",
+    },
+    {
+      title: "Diseno y presupuesto",
+      description: "Ordenamos distribucion, materiales, plazos y costos para que tomes decisiones con informacion clara.",
+    },
+    {
+      title: "Ejecucion supervisada",
+      description: "Coordinamos obra, compras y terminaciones con seguimiento tecnico hasta la recepcion del proyecto.",
+    },
+  ];
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#fbfaf5_0%,#edf7ef_48%,#d7eadb_100%)]">
-        <div className="u-container grid min-h-[680px] items-center gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <p className="mb-5 inline-flex rounded-full bg-white/80 px-4 py-2 text-sm font-bold text-construction-primary shadow-sm">Construccion de casas, ampliaciones y remodelaciones</p>
-            <h1 className="max-w-4xl text-5xl font-black tracking-tight text-construction-neutral md:text-7xl">{siteCopy.heroTitle}</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-construction-muted">{siteCopy.heroSubtitle}</p>
+      <section className="relative min-h-[720px] overflow-hidden bg-construction-neutral text-white">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, rgba(12, 20, 16, 0.86) 0%, rgba(12, 20, 16, 0.58) 46%, rgba(12, 20, 16, 0.18) 100%), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=85')",
+          }}
+        />
+        <div className="u-container relative flex min-h-[720px] items-center py-24">
+          <div className="max-w-3xl">
+            <p className="mb-5 inline-flex rounded-sm bg-white/12 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em] text-emerald-100">Construccion de casas y remodelaciones</p>
+            <h1 className="text-5xl font-black tracking-tight md:text-7xl">{siteCopy.heroTitle}</h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82">{siteCopy.heroSubtitle}</p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link href="/contacto" className="u-btn-primary">Cotiza tu proyecto</Link>
-              <Link href="/proyectos" className="u-btn-secondary">Ver proyectos</Link>
-            </div>
-          </div>
-          <div className="rounded-[2.5rem] bg-construction-primary p-6 text-white shadow-2xl shadow-emerald-950/20">
-            <div className="rounded-[2rem] border border-white/20 bg-white/10 p-8 backdrop-blur">
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-emerald-100">Nuestro compromiso</p>
-              <h2 className="mt-5 text-4xl font-black">Cada hogar lleva nuestra firma de calidad.</h2>
-              <p className="mt-5 leading-8 text-white/80">No solo construimos casas. Construimos confianza, relaciones duraderas y espacios preparados para vivir mejor.</p>
+              <Link href="/proyectos" className="u-btn-light">Ver proyectos</Link>
             </div>
           </div>
         </div>
       </section>
 
+      <section className="border-b border-emerald-950/10 bg-white">
+        <div className="u-container grid gap-6 py-8 md:grid-cols-3">
+          {metrics.map((metric) => (
+            <div key={metric.label} className="border-l-4 border-construction-secondary pl-5">
+              <div className="text-4xl font-black text-construction-primary">{metric.value}</div>
+              <div className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-construction-muted">{metric.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="u-section">
-        <div className="u-container">
-          <SectionHeading eyebrow="Servicios" title="Soluciones integrales para tu hogar" description="Desde construir desde cero hasta transformar espacios existentes, trabajamos con orden, criterio tecnico y terminaciones bien resueltas." align="center" />
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="u-container grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Servicios" title="Disenos modernos para tu espacio" description="Soluciones integrales para construir, ampliar o remodelar tu hogar con propuestas a medida y terminaciones bien resueltas." />
+            <Link href="/servicios" className="u-btn-secondary mt-7">Ver todos los servicios</Link>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2">
             {services.map((service) => <ServiceCard key={service.slug} service={service} />)}
           </div>
         </div>
@@ -42,12 +70,40 @@ export default function HomePage() {
 
       <section className="bg-white u-section">
         <div className="u-container grid gap-12 lg:grid-cols-2 lg:items-center">
-          <SectionHeading eyebrow="Sobre nosotros" title="Calidad y confianza en cada construccion" description={siteCopy.about} />
-          <div className="grid gap-4 sm:grid-cols-2">
-            {values.map((value) => (
-              <div key={value.title} className="rounded-3xl bg-construction-surface p-6">
-                <h3 className="font-bold text-construction-primary">{value.title}</h3>
-                <p className="mt-2 text-sm leading-7 text-construction-muted">{value.description}</p>
+          <div className="relative min-h-[520px] overflow-hidden rounded-lg bg-cover bg-center shadow-xl shadow-emerald-950/10" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=85')" }}>
+            <div className="absolute bottom-6 left-6 max-w-xs rounded-lg bg-white p-6 shadow-lg">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-construction-secondary">Nuestro compromiso</p>
+              <p className="mt-3 text-2xl font-black leading-tight text-construction-neutral">Cada hogar lleva nuestra firma de calidad.</p>
+            </div>
+          </div>
+          <div>
+            <SectionHeading eyebrow="Sobre nosotros" title="Entregar calidad y confianza en cada construccion" description={siteCopy.about} />
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {values.map((value) => (
+                <div key={value.title} className="rounded-lg border border-emerald-950/10 bg-construction-surface p-6">
+                  <h3 className="font-bold text-construction-primary">{value.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-construction-muted">{value.description}</p>
+                </div>
+              ))}
+            </div>
+            <Link href="/nosotros" className="u-btn-primary mt-8">Conoce mas</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-construction-neutral py-16 text-white">
+        <div className="u-container grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-100">Como trabajamos</p>
+            <h2 className="mt-4 text-4xl font-black tracking-tight">Te guiamos desde la idea hasta la entrega</h2>
+            <p className="mt-5 leading-8 text-white/72">Cada proyecto se planifica con visita a terreno, presupuesto transparente y acompanamiento tecnico para transformar tu espacio sin improvisar.</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {processSteps.map((step, index) => (
+              <div key={step.title} className="rounded-lg border border-white/10 bg-white/6 p-6">
+                <div className="text-sm font-black text-construction-secondary">0{index + 1}</div>
+                <h3 className="mt-4 text-xl font-bold">{step.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-white/68">{step.description}</p>
               </div>
             ))}
           </div>
@@ -56,7 +112,7 @@ export default function HomePage() {
 
       <section className="u-section">
         <div className="u-container">
-          <SectionHeading eyebrow="Proyectos" title="Obras realizadas con seriedad" description="Una seleccion de proyectos residenciales ejecutados en distintos contextos, terrenos y necesidades." />
+          <SectionHeading eyebrow="Proyectos" title="Mas de 25 anos construyendo confianza" description="Una seleccion de obras residenciales ejecutadas en distintos contextos, terrenos y necesidades." align="center" />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {featuredProjects.map((project) => <ProjectCard key={project.slug} project={project} />)}
           </div>
@@ -64,14 +120,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-construction-primary py-12 text-white">
-        <div className="u-container grid gap-6 text-center md:grid-cols-3">
-          {metrics.map((metric) => (
-            <div key={metric.label}>
-              <div className="text-5xl font-black">{metric.value}</div>
-              <div className="mt-2 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-100">{metric.label}</div>
-            </div>
-          ))}
+      <section className="bg-construction-primary py-16 text-white">
+        <div className="u-container grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+          <div>
+            <h2 className="text-4xl font-black tracking-tight">Listo para comenzar tu proyecto?</h2>
+            <p className="mt-4 max-w-2xl leading-8 text-white/80">Te ayudamos a construir, ampliar o remodelar tu hogar con una ruta clara desde la primera visita hasta la entrega.</p>
+          </div>
+          <Link href="/contacto" className="u-btn-light">Solicita tu cotizacion</Link>
         </div>
       </section>
     </>

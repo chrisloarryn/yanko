@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { logoutAction } from "./actions";
 
 const adminNav = [
   ["Dashboard", "/ynk/admin"],
@@ -19,9 +18,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <nav className="mt-10 grid gap-2 text-sm text-white/70">
           {adminNav.map(([label, href]) => <Link key={href} href={href} className="rounded-xl px-4 py-3 hover:bg-white/10 hover:text-white">{label}</Link>)}
         </nav>
-        <form action={logoutAction} className="absolute bottom-6 left-6 right-6">
-          <button className="w-full rounded-xl bg-white/10 px-4 py-3 text-sm font-bold">Cerrar sesion</button>
-        </form>
+        <Link href="/ynk/admin/login" className="absolute bottom-6 left-6 right-6 block rounded-xl bg-white/10 px-4 py-3 text-center text-sm font-bold">
+          Cerrar sesion
+        </Link>
       </aside>
       <main className="p-5 lg:ml-72 lg:p-10">{children}</main>
     </div>
