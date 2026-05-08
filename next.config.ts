@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
   basePath: isGitHubActions && repoName ? `/${repoName}` : "",
   assetPrefix: isGitHubActions && repoName ? `/${repoName}/` : "",

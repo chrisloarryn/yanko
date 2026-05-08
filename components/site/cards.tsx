@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Project, Service } from "@/lib/types/content";
 import { categoryLabels } from "@/lib/data/projects";
 
@@ -16,10 +17,14 @@ export function ServiceCard({ service }: { service: Service }) {
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <Link href={`/proyectos/${project.slug}`} className="group overflow-hidden rounded-2xl border border-construction-primary/15 bg-white/95 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl">
-      <div
-        className="relative aspect-[4/3] bg-cover bg-center"
-        style={{ backgroundImage: `url('${project.coverImageUrl}')` }}
-      >
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <Image
+          src={project.coverImageUrl}
+          alt={`Imagen de portada del proyecto ${project.title}`}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover"
+        />
         <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-construction-primary">{project.location}</span>
       </div>
       <div className="p-6">
