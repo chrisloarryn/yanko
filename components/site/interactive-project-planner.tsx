@@ -233,22 +233,25 @@ export function InteractiveProjectPlanner() {
 
           <div className="overflow-hidden rounded-lg border border-white/10 bg-white/6">
             <div className="relative h-[300px]">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage: "url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80')",
-                }}
+              <Image
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"
+                alt="Vista después de proyecto de construcción"
+                fill
+                className="object-cover"
+                sizes="100vw"
               />
               <div
                 className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-white"
                 style={{ width: `${comparison}%` }}
               >
-                <div
-                  className="h-full w-[min(88vw,520px)] bg-cover bg-center grayscale"
-                  style={{
-                    backgroundImage: "url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80')",
-                  }}
-                />
+                <div className="relative h-full w-[min(88vw,520px)] overflow-hidden grayscale">
+                  <Image
+                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80"
+                    alt="Vista antes de remodelación"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
               <div className="absolute left-4 top-4 rounded-sm bg-black/55 px-3 py-2 text-xs font-bold uppercase tracking-[0.14em]">Antes</div>
               <div className="absolute right-4 top-4 rounded-sm bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-construction-primary">Despues</div>
