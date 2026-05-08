@@ -4,8 +4,32 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { contact } from "@/lib/data/site";
 
 export const metadata: Metadata = {
-  title: "Contacto",
+  title: "Contacto | Yanko",
   description: "Cotiza tu proyecto de construcción, ampliación o remodelación con Yanko.",
+  keywords: [
+    "contacto construcción",
+    "cotizar casa",
+    "presupuesto remodelación",
+    "Yanko contacto"
+  ],
+  openGraph: {
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+        width: 1200,
+        height: 630,
+        alt: "Cotiza tu proyecto con Yanko",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+  },
+  alternates: {
+    canonical: "/contacto/",
+  },
 };
 
 export default function ContactPage() {

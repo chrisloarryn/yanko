@@ -14,12 +14,28 @@ export function SmartCta() {
   const pathname = usePathname();
   const currentPath = pathname ?? "";
   const [active, setActive] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setActive(window.scrollY > 340);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const footer = document.querySelector("[data-site-footer]");
+    if (!footer) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0.05 },
+    );
+    observer.observe(footer);
+
+    return () => observer.disconnect();
   }, []);
 
   const cta = useMemo<SmartCtaCopy>(() => {
@@ -38,7 +54,7 @@ export function SmartCta() {
   return (
     <div
       className={`fixed bottom-[calc(env(safe-area-inset-bottom,0px)+1rem)] left-1/2 z-50 -translate-x-1/2 transition-all duration-300 md:bottom-[calc(env(safe-area-inset-bottom,0px)+5.25rem)] ${
-        active ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none translate-y-5 opacity-0"
+        active && !footerVisible ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none translate-y-5 opacity-0"
       }`}
     >
       <Link

@@ -11,7 +11,36 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((item) => item.slug === slug);
-  return { title: project?.title || "Proyecto", description: project?.excerpt };
+  if (!project) return {};
+  const ogImage = project.coverImageUrl ? `${project.coverImageUrl}?auto=format&fit=crop&w=1200&q=85` : "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85";
+  return {
+    title: `${project.title} | Yanko`,
+    description: project.excerpt,
+    keywords: [
+      `${project.title}`,
+      project.category,
+      project.location,
+      "proyectos construcción"
+    ],
+    openGraph: {
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      images: [ogImage],
+      card: "summary_large_image",
+    },
+    alternates: {
+      canonical: `/proyectos/${slug}/`,
+    },
+  };
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {

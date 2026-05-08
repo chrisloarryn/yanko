@@ -5,8 +5,32 @@ import { categoryLabels, projects } from "@/lib/data/projects";
 import type { ContentCategory } from "@/lib/types/content";
 
 export const metadata: Metadata = {
-  title: "Proyectos",
+  title: "Proyectos | Yanko",
   description: "Proyectos realizados de construccion, remodelaciones y ampliaciones de viviendas.",
+  keywords: [
+    "proyectos construcción",
+    "casas terminadas",
+    "remodelaciones reales",
+    "portafolio Yanko"
+  ],
+  openGraph: {
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+        width: 1200,
+        height: 630,
+        alt: "Proyectos Yanko",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+  },
+  alternates: {
+    canonical: "/proyectos/",
+  },
 };
 
 export default function ProjectsPage({ searchParams }: { searchParams: { categoria?: ContentCategory } }) {

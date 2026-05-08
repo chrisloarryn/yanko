@@ -6,6 +6,36 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { projects } from "@/lib/data/projects";
 import { services } from "@/lib/data/services";
 import { metrics, siteCopy, values } from "@/lib/data/site";
+import type { Metadata } from "next";
+
+export function generateMetadata(): Metadata {
+  return {
+    title: `Yanko | ${siteCopy.heroTitle}`,
+    description: siteCopy.heroSubtitle,
+    keywords: [
+      "Yanko inicio",
+      "construcción casas",
+      "remodelaciones Chile"
+    ],
+    openGraph: {
+      images: [
+        {
+          url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+          width: 1200,
+          height: 630,
+          alt: siteCopy.heroTitle,
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85"],
+    },
+    alternates: {
+      canonical: "/",
+    },
+  };
+}
 
 export default function HomePage() {
   const featuredProjects = projects.filter((project) => project.isFeatured).slice(0, 6);

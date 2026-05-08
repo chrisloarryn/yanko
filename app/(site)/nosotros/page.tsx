@@ -3,8 +3,32 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { siteCopy, values } from "@/lib/data/site";
 
 export const metadata: Metadata = {
-  title: "Nosotros",
+  title: "Nosotros | Yanko",
   description: "Conoce la misión, visión y valores de Yanko para construcción de casas, ampliaciones y remodelaciones.",
+  keywords: [
+    "nosotros Yanko",
+    "misión visión valores",
+    "equipo construcción",
+    "constructoras Maule"
+  ],
+  openGraph: {
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+        width: 1200,
+        height: 630,
+        alt: "Nosotros Yanko",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+  },
+  alternates: {
+    canonical: "/nosotros/",
+  },
 };
 
 export default function NosotrosPage() {

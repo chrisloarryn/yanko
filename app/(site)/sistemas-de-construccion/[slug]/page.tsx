@@ -9,7 +9,35 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const system = constructionSystems.find((item) => item.slug === slug);
-  return { title: system?.title || "Sistema de construccion", description: system?.excerpt };
+  if (!system) return {};
+  const ogImage = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85";
+  return {
+    title: `${system.title} | Yanko`,
+    description: system.excerpt,
+    keywords: [
+      `${system.title}`,
+      "sistemas construcción",
+      "materiales Yanko"
+    ],
+    openGraph: {
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: system.title,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      images: [ogImage],
+      card: "summary_large_image",
+    },
+    alternates: {
+      canonical: `/sistemas-de-construccion/${slug}/`,
+    },
+  };
 }
 
 export default async function SystemDetailPage({ params }: { params: Promise<{ slug: string }> }) {

@@ -9,7 +9,34 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
-  return { title: service?.title || "Servicio", description: service?.excerpt };
+  if (!service) return {};
+  return {
+    title: `${service.title} | Yanko`,
+    description: service.description,
+    keywords: [
+      `${service.title}`,
+      "servicios construcción",
+      "Yanko Talca"
+    ],
+    openGraph: {
+      images: [
+        {
+          url: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=85",
+          width: 1200,
+          height: 630,
+          alt: service.title,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      images: ["https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=85"],
+      card: "summary_large_image",
+    },
+    alternates: {
+      canonical: `/servicios/${slug}/`,
+    },
+  };
 }
 
 export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {

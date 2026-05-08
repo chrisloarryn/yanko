@@ -4,16 +4,13 @@ import { services } from "@/lib/data/services";
 
 export function Footer() {
   return (
-    <footer className="bg-[linear-gradient(135deg,#081325_0%,#0f2a44_65%,#0d766e_130%)] text-white">
+    <footer data-site-footer className="bg-[linear-gradient(135deg,#081325_0%,#0f2a44_65%,#0d766e_130%)] text-white">
       <div className="u-container grid gap-10 py-14 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <div className="mb-4 text-2xl font-bold">{siteCopy.brand}</div>
           <p className="max-w-md text-sm leading-7 text-white/70">
             Construccion, ampliaciones y remodelaciones con seriedad, calidad y acompanamiento profesional.
           </p>
-          <Link href="/contacto" className="u-btn-primary mt-6">
-            Solicita tu cotizacion
-          </Link>
         </div>
         <div>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-100">Navegacion</h2>
