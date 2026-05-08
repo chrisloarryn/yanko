@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ProjectCard, ServiceCard } from "@/components/site/cards";
 import { InteractiveProjectPlanner } from "@/components/site/interactive-project-planner";
 import { SectionHeading } from "@/components/site/section-heading";
@@ -69,11 +70,19 @@ export default function HomePage() {
   return (
     <>
       <section className="relative min-h-[760px] overflow-hidden bg-construction-neutral text-white">
+        <Image
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=85"
+          alt="Fondo hero de construcción"
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover"
+        />
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(104deg, rgba(8, 17, 33, 0.92) 0%, rgba(8, 17, 33, 0.7) 38%, rgba(8, 17, 33, 0.22) 100%), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=85')",
+              "linear-gradient(104deg, rgba(8, 17, 33, 0.92) 0%, rgba(8, 17, 33, 0.7) 38%, rgba(8, 17, 33, 0.22) 100%)",
           }}
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_12%,rgba(239,131,84,0.28),transparent_28%),radial-gradient(circle_at_30%_70%,rgba(13,118,110,0.22),transparent_30%)]" />
