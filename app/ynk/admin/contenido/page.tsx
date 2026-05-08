@@ -16,10 +16,10 @@ export default function AdminContentPage() {
       }}
       fields={[
         { key: "brand", label: "Marca" },
-        { key: "heroTitle", label: "Titulo hero", type: "textarea" },
-        { key: "heroSubtitle", label: "Subtitulo hero", type: "textarea" },
-        { key: "mission", label: "Mision", type: "textarea" },
-        { key: "vision", label: "Vision", type: "textarea" },
+        { key: "heroTitle", label: "Título hero", type: "textarea" },
+        { key: "heroSubtitle", label: "Subtítulo hero", type: "textarea" },
+        { key: "mission", label: "Misión", type: "textarea" },
+        { key: "vision", label: "Visión", type: "textarea" },
         { key: "about", label: "Sobre nosotros", type: "textarea" },
       ]}
     />

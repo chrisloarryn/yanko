@@ -23,10 +23,10 @@ export const projects: Project[] = names.map(([slug, title, location, coverImage
   location,
   excerpt: "Proyecto residencial ejecutado con foco en calidad, funcionalidad y terminaciones duraderas.",
   description:
-    "Este proyecto refleja una solucion habitacional pensada para adaptarse al terreno, las necesidades familiares y una ejecucion responsable en cada etapa de obra.",
+    "Este proyecto refleja una solución habitacional pensada para adaptarse al terreno, las necesidades familiares y una ejecución responsable en cada etapa de obra.",
   coverImageUrl,
   gallery: [],
-  features: ["Planificacion de obra", "Terminaciones cuidadas", "Acompanamiento tecnico"],
+  features: ["Planificación de obra", "Terminaciones cuidadas", "Acompañamiento técnico"],
   isFeatured: index < 6,
   isPublished: true,
   sortOrder: index + 1,
@@ -34,7 +34,7 @@ export const projects: Project[] = names.map(([slug, title, location, coverImage
 
 export const categoryLabels: Record<ContentCategory | "todos", string> = {
   todos: "Todos",
-  construccion: "Construccion",
+  construccion: "Construcción",
   remodelaciones: "Remodelaciones",
   ampliaciones: "Ampliaciones",
 };

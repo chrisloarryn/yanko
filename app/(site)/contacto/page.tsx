@@ -5,7 +5,7 @@ import { contact } from "@/lib/data/site";
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: "Cotiza tu proyecto de construccion, ampliacion o remodelacion con Yanko.",
+  description: "Cotiza tu proyecto de construcción, ampliación o remodelación con Yanko.",
 };
 
 export default function ContactPage() {
@@ -13,7 +13,7 @@ export default function ContactPage() {
     <section className="u-section">
       <div className="u-container grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div>
-          <SectionHeading eyebrow="Contacto" title="Cotiza tu proyecto de construccion" description="Cuéntanos que necesitas construir, ampliar o remodelar. Te orientaremos con claridad para dar el siguiente paso." />
+          <SectionHeading eyebrow="Contacto" title="Cotiza tu proyecto de construcción" description="Cuéntanos qué necesitas construir, ampliar o remodelar. Te orientaremos con claridad para dar el siguiente paso." />
           <div className="mt-8 grid gap-4 text-construction-muted">
             <a href={contact.phoneHref}>{contact.phone}</a>
             <a href={contact.emailHref}>{contact.email}</a>

@@ -10,9 +10,9 @@ import { metrics, siteCopy, values } from "@/lib/data/site";
 export default function HomePage() {
   const featuredProjects = projects.filter((project) => project.isFeatured).slice(0, 6);
   const proofPoints = [
-    "Visita tecnica inicial en terreno",
+    "Visita técnica inicial en terreno",
     "Propuesta con alcance y presupuesto por partidas",
-    "Reporte semanal de avance con proximos hitos",
+    "Reporte semanal de avance con próximos hitos",
   ];
   const testimonials = [
     {
@@ -25,13 +25,13 @@ export default function HomePage() {
       quote:
         "El nivel de terminaciones y la comunicacion diaria marcaron una diferencia enorme frente a otras constructoras.",
       author: "Carolina M.",
-      context: "Remodelacion integral, Maule",
+      context: "Remodelación integral, Maule",
     },
     {
       quote:
         "Nos orientaron desde el diseno hasta la recepcion final. Cero improvisacion y decisiones claras todo el tiempo.",
       author: "Jorge y Paula",
-      context: "Ampliacion y quincho, San Clemente",
+      context: "Ampliación y quincho, San Clemente",
     },
   ];
   const processSteps = [
@@ -40,17 +40,17 @@ export default function HomePage() {
       description: "Levantamos medidas, condiciones del terreno, necesidades y prioridades para definir un alcance realista.",
     },
     {
-      title: "Diseno y presupuesto",
+      title: "Diseño y presupuesto",
       description: "Ordenamos distribucion, materiales, plazos y costos para que tomes decisiones con informacion clara.",
     },
     {
-      title: "Ejecucion supervisada",
+      title: "Ejecución supervisada",
       description: "Coordinamos obra, compras y terminaciones con seguimiento tecnico hasta la recepcion del proyecto.",
     },
   ];
   const buildSystem = [
     {
-      title: "Estandares de obra",
+      title: "Estándares de obra",
       description: "Usamos criterios repetibles para ordenar partidas, compras, control de avances y terminaciones.",
     },
     {
@@ -63,7 +63,7 @@ export default function HomePage() {
     },
     {
       title: "Expertos coordinados",
-      description: "Integramos maestros, especialistas y supervision tecnica segun la complejidad de cada proyecto.",
+      description: "Integramos maestros, especialistas y supervisión técnica según la complejidad de cada proyecto.",
     },
   ];
 
@@ -88,7 +88,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_12%,rgba(239,131,84,0.28),transparent_28%),radial-gradient(circle_at_30%_70%,rgba(13,118,110,0.22),transparent_30%)]" />
         <div className="u-container relative flex min-h-[760px] items-center py-24">
           <div className="max-w-3xl">
-            <p className="mb-5 inline-flex rounded-full border border-white/25 bg-white/12 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-100">Construccion de casas y remodelaciones</p>
+            <p className="mb-5 inline-flex rounded-full border border-white/25 bg-white/12 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-100">Construcción de casas y remodelaciones</p>
             <h1 className="text-5xl font-black tracking-tight md:text-7xl md:leading-[0.98]">{siteCopy.heroTitle}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/86">{siteCopy.heroSubtitle}</p>
             <div className="mt-7 flex flex-wrap gap-2">

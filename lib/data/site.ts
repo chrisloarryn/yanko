@@ -6,22 +6,22 @@ export const contact = {
   whatsapp: "https://wa.me/56927091061?text=Hola,%20quiero%20cotizar%20un%20proyecto",
   email: "yanko.valladares@gmail.com",
   emailHref: "mailto:yanko.valladares@gmail.com",
-  address: "Talca, Region del Maule, Chile",
+  address: "Talca, Región del Maule, Chile",
   facebook: "https://www.facebook.com/",
   instagram: "https://www.instagram.com/",
 };
 
 export const siteCopy = {
   brand: "Yanko",
-  heroTitle: "Casas premium en Talca con proceso claro y cero improvisacion",
+  heroTitle: "Casas premium en Talca con proceso claro y cero improvisación",
   heroSubtitle:
-    "Disenamos y ejecutamos proyectos residenciales en la Region del Maule con planificacion tecnica, control de avance semanal y terminaciones de alto estandar.",
+    "Diseñamos y ejecutamos proyectos residenciales en la Región del Maule con planificación técnica, control de avance semanal y terminaciones de alto estándar.",
   mission:
     "Entregar proyectos residenciales seguros, duraderos y bien gestionados para familias que valoran claridad, cumplimiento y calidad constructiva.",
   vision:
     "Ser la constructora referente en Talca y Maule para obras residenciales premium con trazabilidad total y experiencia de cliente sobresaliente.",
   about:
-    "Nos especializamos en construccion de casas, ampliaciones, remodelaciones y asesorias tecnicas. Combinamos experiencia en terreno, control de calidad por etapas y comunicacion transparente para que cada decision se tome con datos y no con supuestos.",
+    "Nos especializamos en construcción de casas, ampliaciones, remodelaciones y asesorías técnicas. Combinamos experiencia en terreno, control de calidad por etapas y comunicación transparente para que cada decisión se tome con datos y no con supuestos.",
 };
 
 export const values: SiteValue[] = [
@@ -44,7 +44,7 @@ export const values: SiteValue[] = [
 ];
 
 export const metrics: SiteMetric[] = [
-  { label: "Anos de experiencia", value: "25+" },
+  { label: "Años de experiencia", value: "25+" },
   { label: "Proyectos entregados", value: "120+" },
   { label: "Tiempo de respuesta", value: "<24h" },
 ];

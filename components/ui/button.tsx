@@ -1,30 +1,30 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
-import { cx } from "@/lib/utils";
+import { ButtonHTMLAttributes, forwardRef } from 'react'
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary";
-  size?: "sm" | "md" | "lg";
-  children: ReactNode;
-};
+import { cn } from '@/lib/utils'
 
-export function Button({
-  variant = "primary",
-  size = "md",
-  className,
-  children,
-  ...props
-}: ButtonProps) {
-  return (
-    <button
-      className={cx(
-        variant === "primary" ? "u-btn-primary" : "u-btn-secondary",
-        size === "sm" && "px-4 py-2",
-        size === "lg" && "px-8 py-4 text-base",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </button>
-  );
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary'
 }
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = 'primary', ...props }, ref) => {
+    return (
+      <button
+        className={cn(
+          'inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+          {
+            'bg-primary text-primary-foreground hover:bg-primary/90': variant === 'primary',
+            'border border-input bg-background hover:bg-accent hover:text-accent-foreground': variant === 'secondary',
+          },
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+
+Button.displayName = 'Button'
+
+export { Button }

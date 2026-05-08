@@ -19,7 +19,7 @@ export function ProjectCard({ project }: { project: Project }) {
     <Link href={`/proyectos/${project.slug}`} className="group overflow-hidden rounded-2xl border border-construction-primary/15 bg-white/95 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl">
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
-          src={project.coverImageUrl}
+          src={project.coverImageUrl!}
           alt={`Imagen de portada del proyecto ${project.title}`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

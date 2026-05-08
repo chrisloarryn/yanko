@@ -4,7 +4,7 @@ import { contact } from "@/lib/data/site";
 export default function AdminConfigPage() {
   return (
     <LocalSettingsEditor
-      title="Configuracion"
+      title="Configuración"
       storageKey="yanko-admin-config"
       initialValue={{
         phone: contact.phone,
@@ -15,9 +15,9 @@ export default function AdminConfigPage() {
         instagram: contact.instagram,
       }}
       fields={[
-        { key: "phone", label: "Telefono" },
+        { key: "phone", label: "Teléfono" },
         { key: "email", label: "Email" },
-        { key: "address", label: "Direccion", type: "textarea" },
+        { key: "address", label: "Dirección", type: "textarea" },
         { key: "whatsapp", label: "Whatsapp" },
         { key: "facebook", label: "Facebook" },
         { key: "instagram", label: "Instagram" },

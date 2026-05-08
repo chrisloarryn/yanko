@@ -51,16 +51,16 @@ export function ContactForm() {
       <input required name="name" className="u-input" placeholder="Nombre" />
       <div className="grid gap-4 md:grid-cols-2">
         <input name="email" type="email" className="u-input" placeholder="Email" />
-        <input required name="phone" className="u-input" placeholder="Telefono" />
+        <input required name="phone" className="u-input" placeholder="Teléfono" />
       </div>
       <select name="projectType" className="u-input" defaultValue="">
         <option value="" disabled>Tipo de proyecto</option>
-        <option>Construccion de casa</option>
-        <option>Ampliacion</option>
-        <option>Remodelacion</option>
+        <option>Construcción de casa</option>
+        <option>Ampliación</option>
+        <option>Remodelación</option>
         <option>Alcantarillado rural</option>
       </select>
-      <textarea required name="message" className="u-input min-h-36" placeholder="Cuentanos que necesitas construir o mejorar" />
+      <textarea required name="message" className="u-input min-h-36" placeholder="Cuéntanos qué necesitas construir o mejorar" />
       <button className="u-btn-primary" type="submit" disabled={status === "submitting"}>
         {status === "submitting" ? "Enviando..." : "Enviar solicitud"}
       </button>
