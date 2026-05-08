@@ -20,15 +20,22 @@ export function BeforeAfterSlider({
   return (
     <div className="overflow-hidden rounded-[2rem] border border-white/20 bg-white/10">
       <div className="relative h-[340px] md:h-[430px]">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${afterImage}')` }}
+        <Image
+          src={afterImage}
+          alt="Imagen después de la obra"
+          fill
+          className="object-cover"
+          sizes="100vw"
         />
         <div className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-white/85" style={{ width: `${comparison}%` }}>
-          <div
-            className="h-full w-[min(95vw,880px)] bg-cover bg-center"
-            style={{ backgroundImage: `url('${beforeImage}')` }}
-          />
+          <div className="relative h-full w-[min(95vw,880px)] overflow-hidden">
+            <Image
+              src={beforeImage}
+              alt="Imagen antes de la obra"
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
 
         <div className="absolute left-4 top-4 rounded-full bg-black/60 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white">
