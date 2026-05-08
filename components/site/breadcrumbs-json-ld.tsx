@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 
 export function BreadcrumbsJsonLd() {
-  const pathname = usePathname()
+  const pathname = usePathname() || '/'
   const baseUrl = 'https://yanko.cl'
 
   const getCrumbs = () => {
