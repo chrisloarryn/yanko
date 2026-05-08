@@ -83,7 +83,7 @@ export const services: Service[] = [
     id: "obras-menores",
     title: "Obras Menores",
     slug: "obras-menores",
-    excerpt: "Trabajos puntuales con respuesta rápida y buena terminación.",},{
+    excerpt: "Trabajos puntuales con respuesta rápida y buena terminación.",
     description:
       "Realizamos pintura, cierres, reparaciones, gasfitería, cambios de ventanas y mejoras específicas para tu vivienda.",
     benefits: ["Rapidez", "Orden en obra", "Soluciones concretas"],

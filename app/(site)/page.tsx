@@ -157,7 +157,14 @@ export default function HomePage() {
 
       <section className="bg-white/70 u-section">
         <div className="u-container grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="relative min-h-[520px] overflow-hidden rounded-3xl bg-cover bg-center shadow-xl shadow-cyan-900/20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=85')" }}>
+          <div className="relative min-h-[520px] overflow-hidden rounded-3xl shadow-xl shadow-cyan-900/20">
+            <Image
+              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=85"
+              alt="Obras de construcción Yanko en terreno"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
             <div className="absolute bottom-6 left-6 max-w-xs rounded-2xl bg-white p-6 shadow-lg">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-construction-secondary">Nuestro compromiso</p>
               <p className="mt-3 text-2xl font-black leading-tight text-construction-neutral">Cada hogar lleva nuestra firma de calidad.</p>
@@ -214,7 +221,15 @@ export default function HomePage() {
           </div>
           <div className="mt-10 overflow-hidden rounded-3xl bg-construction-neutral text-white shadow-xl shadow-cyan-900/20">
             <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
-              <div className="min-h-[360px] bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1400&q=85')" }} />
+              <div className="relative min-h-[360px] overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1400&q=85"
+                  alt="Control de proyecto en obra de construcción"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 58vw, 100vw"
+                />
+              </div>
               <div className="p-8 md:p-10">
                 <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-100">Control de proyecto</p>
                 <h3 className="mt-4 text-3xl font-black tracking-tight">Menos improvisacion, mas claridad en terreno</h3>
