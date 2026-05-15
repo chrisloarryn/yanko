@@ -135,7 +135,7 @@ export function InteractiveProjectPlanner() {
     <section className="bg-construction-neutral py-16 text-white">
       <div className="u-container grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-stretch">
         <div className="rounded-lg border border-white/10 bg-white/6 p-6 md:p-8">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-100">Planificador interactivo</p>
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/58">Planificador interactivo</p>
           <h2 className="mt-4 text-4xl font-black tracking-tight">Explora tu proyecto antes de cotizar</h2>
           <p className="mt-4 max-w-2xl leading-8 text-white/72">Ajusta tipo de obra, metros y nivel de terminaciones para tener una primera referencia. La cotizacion final siempre se define con visita a terreno.</p>
 
@@ -208,7 +208,7 @@ export function InteractiveProjectPlanner() {
         </div>
 
         <div className="grid gap-4">
-          <div className="rounded-lg bg-white p-6 text-construction-neutral shadow-xl shadow-emerald-950/20">
+          <div className="rounded-lg bg-white p-6 text-construction-neutral shadow-lg">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-construction-secondary">Referencia inicial</p>
             <div className="mt-4 text-4xl font-black text-construction-primary">UF {formatUf(estimate.ufFrom)} - {formatUf(estimate.ufTo)}</div>
             <div className="mt-2 text-lg font-bold text-construction-neutral">{formatClp(estimate.clpFrom)} - {formatClp(estimate.clpTo)}</div>

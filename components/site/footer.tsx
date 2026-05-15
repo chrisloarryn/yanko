@@ -4,7 +4,7 @@ import { services } from "@/lib/data/services";
 
 export function Footer() {
   return (
-    <footer data-site-footer className="bg-[linear-gradient(135deg,#081325_0%,#0f2a44_65%,#0d766e_130%)] text-white">
+    <footer data-site-footer className="border-t border-white/10 bg-construction-neutral text-white">
       <div className="u-container grid gap-10 py-14 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <div className="mb-4 text-2xl font-bold">{siteCopy.brand}</div>
@@ -13,13 +13,13 @@ export function Footer() {
           </p>
         </div>
         <div>
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-100">Navegacion</h2>
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-white/58">Navegacion</h2>
           <div className="grid gap-3 text-sm text-white/70">
             {navItems.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
           </div>
         </div>
         <div>
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-cyan-100">Servicios</h2>
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-white/58">Servicios</h2>
           <div className="grid gap-3 text-sm text-white/70">
             {services.slice(0, 5).map((service) => (
               <Link key={service.slug} href={`/servicios/${service.slug}`}>{service.title}</Link>

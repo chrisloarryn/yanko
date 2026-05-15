@@ -60,7 +60,7 @@ export function SmartCta() {
       <Link
         href={cta.href}
         onClick={() => trackEvent("smart_cta_click", { pathname: currentPath, label: cta.label })}
-        className="inline-flex w-[calc(100vw-2rem)] max-w-sm items-center justify-center rounded-full border border-white/40 bg-construction-primary px-6 py-3.5 text-sm font-bold text-white shadow-2xl shadow-cyan-900/35 backdrop-blur md:w-auto md:min-w-64 md:px-7"
+        className="inline-flex w-[calc(100vw-2rem)] max-w-sm items-center justify-center rounded-full border border-white/40 bg-construction-primary px-6 py-3.5 text-sm font-bold text-white shadow-lg backdrop-blur md:w-auto md:min-w-64 md:px-7"
       >
         {cta.label}
       </Link>

@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f7fb;
-  --foreground: #0e1b2a;
-  --construction-primary: #0d766e;
-  --construction-secondary: #ef8354;
-  --construction-surface: #ecf6ff;
-  --construction-neutral: #09111f;
-  --construction-muted: #5f6f87;
-  --construction-cream: #f7fbff;
+  --background: #f6f4ee;
+  --foreground: #151a1d;
+  --construction-primary: #0e6f67;
+  --construction-secondary: #b96f45;
+  --construction-surface: #e9f1ed;
+  --construction-neutral: #151a1d;
+  --construction-muted: #66716d;
+  --construction-cream: #fbfaf6;
 }
 
 @theme inline {
@@ -27,38 +27,39 @@
 
 @layer utilities {
   .u-container {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-10;
   }
   .u-section {
-    @apply py-16 md:py-24;
+    @apply py-16 md:py-24 lg:py-28;
   }
   .u-btn-primary {
-    @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-lg transition focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-bold text-white transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:translate-y-px;
     background-color: var(--construction-primary);
     --tw-ring-color: var(--construction-primary);
-    box-shadow: 0 14px 34px -18px color-mix(in srgb, var(--construction-primary) 72%, transparent);
+    box-shadow: 0 18px 38px -24px color-mix(in srgb, var(--construction-primary) 88%, transparent);
   }
   .u-btn-primary:hover {
-    background-color: color-mix(in srgb, var(--construction-primary) 88%, black);
+    background-color: color-mix(in srgb, var(--construction-primary) 84%, black);
     transform: translateY(-1px);
   }
   .u-btn-secondary {
-    @apply inline-flex items-center justify-center rounded-xl border bg-white/80 px-6 py-3 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-2;
-    border-color: color-mix(in srgb, var(--construction-primary) 25%, transparent);
-    color: var(--construction-primary);
+    @apply inline-flex items-center justify-center rounded-full border bg-white/70 px-6 py-3 text-sm font-bold transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:translate-y-px;
+    border-color: color-mix(in srgb, var(--construction-neutral) 16%, transparent);
+    color: var(--construction-neutral);
     --tw-ring-color: var(--construction-primary);
   }
   .u-btn-light {
-    @apply inline-flex items-center justify-center rounded-xl border border-white/80 bg-white px-6 py-3 text-sm font-semibold text-construction-primary shadow-lg transition hover:bg-cyan-50 focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-construction-primary;
+    @apply inline-flex items-center justify-center rounded-full border border-white/75 bg-white px-6 py-3 text-sm font-bold text-construction-neutral shadow-lg transition duration-300 hover:bg-construction-cream focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-construction-primary active:translate-y-px;
   }
   .u-btn-secondary:hover {
-    border-color: var(--construction-primary);
-    background-color: var(--construction-surface);
+    border-color: color-mix(in srgb, var(--construction-primary) 42%, transparent);
+    background-color: var(--construction-cream);
+    transform: translateY(-1px);
   }
   .u-card {
-    @apply rounded-2xl border bg-white/94 p-6 shadow-sm;
-    border-color: color-mix(in srgb, var(--construction-primary) 16%, transparent);
-    box-shadow: 0 12px 36px -28px color-mix(in srgb, var(--construction-primary) 44%, transparent);
+    @apply rounded-[1.5rem] border bg-white/86 p-6;
+    border-color: color-mix(in srgb, var(--construction-neutral) 12%, transparent);
+    box-shadow: 0 22px 55px -42px color-mix(in srgb, var(--construction-neutral) 54%, transparent);
   }
   .u-input {
     @apply w-full rounded-xl border bg-white px-4 py-3 text-sm outline-none transition focus:ring-2;
@@ -73,13 +74,13 @@
     --tw-ring-color: color-mix(in srgb, var(--construction-primary) 20%, transparent);
   }
   .u-range {
-    @apply h-2 w-full cursor-pointer appearance-none rounded-full bg-emerald-950/12 accent-emerald-700;
+    @apply h-2 w-full cursor-pointer appearance-none rounded-full bg-construction-neutral/12 accent-construction-primary;
   }
   .u-range::-webkit-slider-thumb {
-    @apply h-5 w-5 appearance-none rounded-full border-2 border-white bg-construction-primary shadow-lg shadow-emerald-950/20;
+    @apply h-5 w-5 appearance-none rounded-full border-2 border-white bg-construction-primary shadow-lg;
   }
   .u-range::-moz-range-thumb {
-    @apply h-5 w-5 rounded-full border-2 border-white bg-construction-primary shadow-lg shadow-emerald-950/20;
+    @apply h-5 w-5 rounded-full border-2 border-white bg-construction-primary shadow-lg;
   }
 }
 
@@ -92,10 +93,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(circle at 15% -10%, rgba(13, 118, 110, 0.14), transparent 34%),
-    radial-gradient(circle at 90% 8%, rgba(239, 131, 84, 0.16), transparent 30%),
-    linear-gradient(180deg, #f8fbff 0%, #f4f7fb 36%, #eef4fb 100%);
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
