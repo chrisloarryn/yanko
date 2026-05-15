@@ -29,15 +29,15 @@ export default function AdminSystemsPage() {
         title: "Nuevo sistema",
         slug: "nuevo-sistema",
         excerpt: "Resumen breve del sistema constructivo.",
-        description: "Descripcion completa del sistema constructivo.",
+        description: "Descripción completa del sistema constructivo.",
         icon: "Sistema",
         isPublished: true,
       }}
       fields={[
-        { key: "title", label: "Titulo" },
+        { key: "title", label: "Título" },
         { key: "slug", label: "Slug" },
         { key: "excerpt", label: "Resumen", type: "textarea" },
-        { key: "description", label: "Descripcion", type: "textarea" },
+        { key: "description", label: "Descripción", type: "textarea" },
         { key: "icon", label: "Etiqueta icono" },
         { key: "isPublished", label: "Publicado", type: "checkbox" },
       ]}

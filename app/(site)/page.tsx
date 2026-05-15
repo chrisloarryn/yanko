@@ -170,7 +170,7 @@ export default function HomePage() {
                   title="Clientes que recomiendan por cumplimiento, no por promesas"
                   description="Cada proyecto se ejecuta con hitos medibles, control de presupuesto y comunicación constante con la familia."
                 />
-                <Link href="/contacto" className="u-btn-primary mt-7">Agendar visita tecnica</Link>
+                <Link href="/contacto" className="u-btn-primary mt-7">Agendar visita técnica</Link>
               </div>
               <div className="grid gap-0 md:grid-cols-3">
                 {testimonials.map((item) => (

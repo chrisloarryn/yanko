@@ -35,7 +35,7 @@ export const services: Service[] = [
     description:
       "Orientamos en factibilidad, presupuestos, etapas, materiales y criterios técnicos para reducir riesgos del proyecto.",
     benefits: ["Decisiones informadas", "Menos incertidumbre", "Mejor control de costos"],
-    process: ["Revision", "Recomendaciones", "Carta de ruta"],
+    process: ["Revisión", "Recomendaciones", "Carta de ruta"],
     icon: "Guia",
     isPublished: true,
     sortOrder: 3,
@@ -70,10 +70,10 @@ export const services: Service[] = [
     id: "logias-terrazas",
     title: "Logias y Terrazas",
     slug: "logias-y-terrazas",
-    excerpt: "Ambientes complementarios mas ordenados, versatiles y luminosos.",
+    excerpt: "Ambientes complementarios más ordenados, versátiles y luminosos.",
     description:
-      "Transformamos logias, terrazas y espacios de apoyo en areas funcionales, bien iluminadas y adaptadas a la rutina diaria del hogar.",
-    benefits: ["Mejor distribucion", "Mayor funcionalidad", "Uso eficiente del espacio"],
+      "Transformamos logias, terrazas y espacios de apoyo en áreas funcionales, bien iluminadas y adaptadas a la rutina diaria del hogar.",
+    benefits: ["Mejor distribución", "Mayor funcionalidad", "Uso eficiente del espacio"],
     process: ["Diagnóstico", "Propuesta", "Ejecución", "Entrega"],
     icon: "Logia",
     isPublished: true,

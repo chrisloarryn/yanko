@@ -54,7 +54,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <p className="text-sm font-bold uppercase tracking-[0.25em] text-construction-secondary">Caso de estudio | {categoryLabels[project.category]} | {project.location}</p>
         <h1 className="mt-4 text-5xl font-black text-construction-neutral">{project.title}</h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-construction-muted">
-          Proyecto planificado para maximizar funcionalidad, calidad de terminaciones y control de presupuesto desde el diseno hasta la entrega final.
+          Proyecto planificado para maximizar funcionalidad, calidad de terminaciones y control de presupuesto desde el diseño hasta la entrega final.
         </p>
         <div className="mt-8 grid gap-3 sm:grid-cols-3">
           <div className="rounded-2xl border border-construction-primary/10 bg-white/80 p-4">
@@ -78,21 +78,21 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           <article className="u-card">
-            <h2 className="text-lg font-black text-construction-neutral">Desafio del cliente</h2>
+            <h2 className="text-lg font-black text-construction-neutral">Desafío del cliente</h2>
             <p className="mt-3 text-sm leading-7 text-construction-muted">
-              Resolver distribucion, tiempos y presupuesto en un terreno con requerimientos especificos de implantacion y terminaciones.
+              Resolver distribución, tiempos y presupuesto en un terreno con requerimientos específicos de implantación y terminaciones.
             </p>
           </article>
           <article className="u-card">
-            <h2 className="text-lg font-black text-construction-neutral">Nuestra solucion</h2>
+            <h2 className="text-lg font-black text-construction-neutral">Nuestra solución</h2>
             <p className="mt-3 text-sm leading-7 text-construction-muted">
-              Planificacion por etapas, coordinacion de especialidades y control tecnico semanal para anticipar desajustes y mantener el ritmo de obra.
+              Planificación por etapas, coordinación de especialidades y control técnico semanal para anticipar desajustes y mantener el ritmo de obra.
             </p>
           </article>
           <article className="u-card">
             <h2 className="text-lg font-black text-construction-neutral">Resultado</h2>
             <p className="mt-3 text-sm leading-7 text-construction-muted">
-              Proyecto entregado con alto estandar de terminaciones, trazabilidad completa y un proceso claro para la familia en cada decision.
+              Proyecto entregado con alto estándar de terminaciones, trazabilidad completa y un proceso claro para la familia en cada decisión.
             </p>
           </article>
         </div>

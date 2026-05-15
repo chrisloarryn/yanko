@@ -9,11 +9,11 @@ export function Footer() {
         <div>
           <div className="mb-4 text-2xl font-bold">{siteCopy.brand}</div>
           <p className="max-w-md text-sm leading-7 text-white/70">
-            Construccion, ampliaciones y remodelaciones con seriedad, calidad y acompanamiento profesional.
+            Construcción, ampliaciones y remodelaciones con seriedad, calidad y acompañamiento profesional.
           </p>
         </div>
         <div>
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-white/58">Navegacion</h2>
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-white/58">Navegación</h2>
           <div className="grid gap-3 text-sm text-white/70">
             {navItems.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
           </div>

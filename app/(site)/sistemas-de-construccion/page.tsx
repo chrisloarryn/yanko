@@ -5,7 +5,7 @@ import { constructionSystems } from "@/lib/data/systems";
 
 export const metadata: Metadata = {
   title: "Sistemas de Construcción | Yanko",
-  description: "Conoce sistemas de construccion y revestimientos para casas, ampliaciones y remodelaciones.",
+  description: "Conoce sistemas de construcción y revestimientos para casas, ampliaciones y remodelaciones.",
   keywords: [
     "sistemas construcción",
     "materiales casas",

@@ -10,21 +10,27 @@ const projectTypes = [
     label: "Casa nueva",
     baseUf: 24,
     baseWeeks: 18,
-    summary: "Ideal para partir desde cero con diseno, obra gruesa y terminaciones coordinadas.",
+    minSquareMeters: 30,
+    maxSquareMeters: 260,
+    summary: "Ideal para partir desde cero con diseño, obra gruesa y terminaciones coordinadas.",
   },
   {
     id: "ampliacion",
-    label: "Ampliacion",
+    label: "Ampliación",
     baseUf: 16,
     baseWeeks: 10,
-    summary: "Para sumar metros utiles, dormitorios, cocina ampliada o segundo piso.",
+    minSquareMeters: 15,
+    maxSquareMeters: 260,
+    summary: "Para sumar metros útiles, dormitorios, cocina ampliada o segundo piso.",
   },
   {
     id: "remodelacion",
-    label: "Remodelacion",
+    label: "Remodelación",
     baseUf: 11,
     baseWeeks: 7,
-    summary: "Para renovar distribucion, banos, cocina, terminaciones o espacios exteriores.",
+    minSquareMeters: 30,
+    maxSquareMeters: 260,
+    summary: "Para renovar distribución, baños, cocina, terminaciones o espacios exteriores.",
   },
 ] as const;
 
@@ -71,6 +77,10 @@ function extractUfValue(payload: unknown): number | null {
   }
 
   return null;
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
 }
 
 export function InteractiveProjectPlanner() {
@@ -137,7 +147,7 @@ export function InteractiveProjectPlanner() {
         <div className="rounded-lg border border-white/10 bg-white/6 p-6 md:p-8">
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/58">Planificador interactivo</p>
           <h2 className="mt-4 text-4xl font-black tracking-tight">Explora tu proyecto antes de cotizar</h2>
-          <p className="mt-4 max-w-2xl leading-8 text-white/72">Ajusta tipo de obra, metros y nivel de terminaciones para tener una primera referencia. La cotizacion final siempre se define con visita a terreno.</p>
+          <p className="mt-4 max-w-2xl leading-8 text-white/72">Ajusta tipo de obra, metros y nivel de terminaciones para tener una primera referencia. La cotización final siempre se define con visita a terreno.</p>
 
           <div className="mt-8 grid gap-5">
             <div>
@@ -147,7 +157,10 @@ export function InteractiveProjectPlanner() {
                   <button
                     key={item.id}
                     type="button"
-                    onClick={() => setProjectType(item.id)}
+                    onClick={() => {
+                      setProjectType(item.id);
+                      setSquareMeters((current) => clamp(current, item.minSquareMeters, item.maxSquareMeters));
+                    }}
                     className={`rounded-lg border px-4 py-3 text-left text-sm font-bold transition ${
                       item.id === projectType
                         ? "border-construction-secondary bg-construction-secondary text-white"
@@ -168,8 +181,8 @@ export function InteractiveProjectPlanner() {
               <input
                 id="squareMeters"
                 type="range"
-                min="30"
-                max="260"
+                min={selectedType.minSquareMeters}
+                max={selectedType.maxSquareMeters}
                 step="5"
                 value={squareMeters}
                 onChange={(event) => setSquareMeters(Number(event.target.value))}
@@ -220,7 +233,7 @@ export function InteractiveProjectPlanner() {
               </div>
               <div className="rounded-lg bg-construction-surface p-4">
                 <div className="text-2xl font-black">{selectedFinish.label}</div>
-                <div className="text-xs font-bold uppercase tracking-[0.14em] text-construction-muted">Terminacion</div>
+                <div className="text-xs font-bold uppercase tracking-[0.14em] text-construction-muted">Terminación</div>
               </div>
             </div>
             <div className="mt-3 rounded-lg bg-construction-surface p-4">
@@ -255,10 +268,10 @@ export function InteractiveProjectPlanner() {
                 </div>
               </div>
               <div className="absolute left-4 top-4 rounded-sm bg-black/55 px-3 py-2 text-xs font-bold uppercase tracking-[0.14em]">Antes</div>
-              <div className="absolute right-4 top-4 rounded-sm bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-construction-primary">Despues</div>
+              <div className="absolute right-4 top-4 rounded-sm bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-construction-primary">Después</div>
             </div>
             <div className="p-4">
-              <label htmlFor="comparison" className="sr-only">Comparar antes y despues</label>
+              <label htmlFor="comparison" className="sr-only">Comparar antes y después</label>
               <input
                 id="comparison"
                 type="range"

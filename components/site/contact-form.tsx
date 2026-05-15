@@ -65,7 +65,7 @@ export function ContactForm() {
         {status === "submitting" ? "Enviando..." : "Enviar solicitud"}
       </button>
       {status === "success" ? <p className="text-sm font-semibold text-construction-primary">Solicitud enviada correctamente.</p> : null}
-      {status === "local" ? <p className="text-sm font-semibold text-construction-secondary">Solicitud guardada localmente. Revisa la configuracion de Supabase/RLS para persistirla.</p> : null}
+      {status === "local" ? <p className="text-sm font-semibold text-construction-secondary">Solicitud guardada localmente. Revisa la configuración de Supabase/RLS para persistirla.</p> : null}
       {status === "error" ? <p className="text-sm font-semibold text-red-600">No pudimos registrar la solicitud. Intenta por Whatsapp.</p> : null}
     </form>
   );

@@ -19,7 +19,7 @@ export function LocalBusinessJsonLd() {
       name: "Chile",
     },
     sameAs: [contact.facebook, contact.instagram],
-    description: "Construccion de casas, ampliaciones, remodelaciones y proyectos de alcantarillado rural.",
+    description: "Construcción de casas, ampliaciones, remodelaciones y proyectos de alcantarillado rural.",
   };
 
   return (

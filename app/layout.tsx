@@ -16,11 +16,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://yanko.cl"),
   title: {
-    default: "Yanko | Construccion de casas y remodelaciones",
+    default: "Yanko | Construcción de casas y remodelaciones",
     template: "%s | Yanko",
   },
   description:
-    "Construccion de casas, ampliaciones, remodelaciones y proyectos de alcantarillado rural con calidad, claridad y acompanamiento profesional.",
+    "Construcción de casas, ampliaciones, remodelaciones y proyectos de alcantarillado rural con calidad, claridad y acompañamiento profesional.",
   keywords: [
     "construcción casas Chile",
     "remodelaciones Talca",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Yanko | Construccion de casas y remodelaciones",
+    title: "Yanko | Construcción de casas y remodelaciones",
     description:
-      "Construimos, ampliamos y remodelamos hogares en Chile con foco en calidad, confianza y diseno.",
+      "Construimos, ampliamos y remodelamos hogares en Chile con foco en calidad, confianza y diseño.",
     type: "website",
     locale: "es_CL",
     siteName: "Yanko",

@@ -39,7 +39,7 @@ export const values: SiteValue[] = [
   },
   {
     title: "Responsabilidad",
-    description: "Trabajamos con criterio tecnico, seguridad y respeto por cada hogar.",
+    description: "Trabajamos con criterio técnico, seguridad y respeto por cada hogar.",
   },
 ];
 

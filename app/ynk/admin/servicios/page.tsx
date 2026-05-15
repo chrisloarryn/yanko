@@ -29,15 +29,15 @@ export default function AdminServicesPage() {
         title: "Nuevo servicio",
         slug: "nuevo-servicio",
         excerpt: "Resumen breve del servicio.",
-        description: "Descripcion completa del servicio.",
+        description: "Descripción completa del servicio.",
         icon: "Nuevo",
         isPublished: true,
       }}
       fields={[
-        { key: "title", label: "Titulo" },
+        { key: "title", label: "Título" },
         { key: "slug", label: "Slug" },
         { key: "excerpt", label: "Resumen", type: "textarea" },
-        { key: "description", label: "Descripcion", type: "textarea" },
+        { key: "description", label: "Descripción", type: "textarea" },
         { key: "icon", label: "Etiqueta icono" },
         { key: "isPublished", label: "Publicado", type: "checkbox" },
       ]}

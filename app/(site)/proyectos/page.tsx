@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { DynamicProjectGrid } from "@/components/site/dynamic-project-grid";
 import { SectionHeading } from "@/components/site/section-heading";
 import { categoryLabels, projects } from "@/lib/data/projects";
@@ -6,7 +7,7 @@ import type { ContentCategory } from "@/lib/types/content";
 
 export const metadata: Metadata = {
   title: "Proyectos | Yanko",
-  description: "Proyectos realizados de construccion, remodelaciones y ampliaciones de viviendas.",
+  description: "Proyectos realizados de construcción, remodelaciones y ampliaciones de viviendas.",
   keywords: [
     "proyectos construcción",
     "casas terminadas",
@@ -41,9 +42,17 @@ export default function ProjectsPage({ searchParams }: { searchParams: { categor
   return (
     <section className="u-section">
       <div className="u-container">
-        <SectionHeading eyebrow="Proyectos" title="Mas de 25 anos construyendo hogares" description="Cada casa, ampliacion o remodelacion refleja compromiso con calidad, diseno y satisfaccion del cliente." align="center" />
+        <SectionHeading eyebrow="Proyectos" title="Más de 25 años construyendo hogares" description="Cada casa, ampliación o remodelación refleja compromiso con calidad, diseño y satisfacción del cliente." align="center" />
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          {categories.map((item) => <a key={item} href={item === "todos" ? "/proyectos" : `/proyectos?categoria=${item}`} className="u-btn-secondary">{categoryLabels[item]}</a>)}
+          {categories.map((item) => (
+            <Link
+              key={item}
+              href={item === "todos" ? "/proyectos" : { pathname: "/proyectos", query: { categoria: item } }}
+              className="u-btn-secondary"
+            >
+              {categoryLabels[item]}
+            </Link>
+          ))}
         </div>
         <DynamicProjectGrid initialProjects={visibleProjects} category={category} />
       </div>

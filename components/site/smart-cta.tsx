@@ -48,7 +48,7 @@ export function SmartCta() {
     if (currentPath.startsWith("/sistemas-de-construccion")) {
       return { href: "/contacto", label: "Evaluar mejor sistema" };
     }
-    return { href: "/contacto", label: "Agendar visita tecnica" };
+    return { href: "/contacto", label: "Agendar visita técnica" };
   }, [currentPath]);
 
   return (

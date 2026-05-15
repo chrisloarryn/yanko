@@ -14,7 +14,7 @@ export function BeforeAfterSlider({
   beforeImage,
   afterImage,
   beforeLabel = "Antes",
-  afterLabel = "Despues",
+  afterLabel = "Después",
 }: BeforeAfterSliderProps) {
   const [comparison, setComparison] = useState(55);
 
@@ -47,7 +47,7 @@ export function BeforeAfterSlider({
         </div>
       </div>
       <div className="bg-construction-neutral/85 p-4">
-        <label htmlFor="project-comparison" className="sr-only">Comparar antes y despues</label>
+        <label htmlFor="project-comparison" className="sr-only">Comparar antes y después</label>
         <input
           id="project-comparison"
           type="range"

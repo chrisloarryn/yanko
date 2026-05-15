@@ -48,7 +48,7 @@ export default async function SystemDetailPage({ params }: { params: Promise<{ s
   return (
     <section className="u-section">
       <div className="u-container max-w-5xl">
-        <p className="text-sm font-bold uppercase tracking-[0.25em] text-construction-secondary">Sistema de construccion</p>
+        <p className="text-sm font-bold uppercase tracking-[0.25em] text-construction-secondary">Sistema de construcción</p>
         <h1 className="mt-4 text-5xl font-black text-construction-neutral">{system.title}</h1>
         <p className="mt-6 text-lg leading-8 text-construction-muted">{system.description}</p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
